@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # local
-    'api,apps.ApiConfig',
+    'api.apps.ApiConfig',
     'articles.apps.ArticlesConfig',
     'comments.apps.CommentsConfig',
     'entries.apps.EntriesConfig',
