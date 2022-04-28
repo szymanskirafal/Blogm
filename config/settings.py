@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # local
     'articles.apps.ArticlesConfig',
+    'comments.apps.CommentsConfig',
     'entries.apps.EntriesConfig',
 ]
 
