@@ -52,7 +52,9 @@ INSTALLED_APPS = [
 
     # 3rd party
     'corsheaders',
+    'dj_rest_auth',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
 CORS_ORIGIN_WHITELIST = ('http://localhost:8000',)
+
+# REST
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+
+       'rest_framework.permissions.AllowAny',
+    ],
+
+   'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+
+], }

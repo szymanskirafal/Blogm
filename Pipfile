@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 environs = {extras = ["django"], version = "*"}
 djangorestframework = "*"
 django-cors-headers = "*"
+dj-rest-auth = "*"
 
 [dev-packages]
 
