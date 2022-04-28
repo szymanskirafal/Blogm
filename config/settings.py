@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # local
     'api,apps.ApiConfig',
@@ -51,8 +52,13 @@ INSTALLED_APPS = [
     'entries.apps.EntriesConfig',
 
     # 3rd party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'corsheaders',
     'dj_rest_auth',
+    'dj_rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -160,3 +166,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication'
 
 ], }
+
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
