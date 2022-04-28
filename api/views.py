@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from articles.models import Article
+from articles.serializers import ArticleSerializer
+from rest_framework import permissions, viewsets
 
-# Create your views here.
+
+class ArticlesViewSet(viewsets.ModelViewSet):
+    serializer_class = ArticleSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
