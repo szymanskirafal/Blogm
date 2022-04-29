@@ -1,10 +1,8 @@
-from django.contrib import admin
-from django.urls import include, path
+from rest_framework import routers
 
-urlpatterns = [
+from .views import ArticleViewSet
 
-    #path('api/', include('api.urls')),
-    
+router = routers.SimpleRouter()
+router.register(r'articles', ArticleViewSet)
 
-
-]
+urlpatterns = router.urls
