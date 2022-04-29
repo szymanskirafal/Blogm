@@ -11,6 +11,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 dj-rest-auth = "*"
 django-allauth = "*"
+django-filter = "*"
 
 [dev-packages]
 

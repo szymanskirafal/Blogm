@@ -1,8 +1,15 @@
+from django.db.models import Count
+
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import permissions, viewsets
+
 from articles.models import Article
 from articles.serializers import ArticleSerializer
-from rest_framework import permissions, viewsets
 
 
 class ArticlesViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.annotate(number_of_comments=Count('comments'))
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title', ]

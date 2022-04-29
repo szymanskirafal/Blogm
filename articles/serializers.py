@@ -3,7 +3,7 @@ from .models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    number_of_comments = serializers.IntegerSerializer()
+    number_of_comments = serializers.IntegerField()
 
     class Meta:
         model = Article
