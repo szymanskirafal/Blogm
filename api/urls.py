@@ -1,7 +1,8 @@
 from rest_framework import routers
-from .views import ArticlesViewSet
 
+from .views import ArticleViewSet
 
 router = routers.SimpleRouter()
-router.register(r'articles', ArticlesViewSet)
+router.register(r'articles', ArticleViewSet)
+
 urlpatterns = router.urls
