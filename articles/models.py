@@ -5,7 +5,7 @@ from comments.models import Comment
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=150, unique=True)
     content = models.TextField()
     comments = GenericRelation(Comment)
 
