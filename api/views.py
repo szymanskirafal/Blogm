@@ -1,11 +1,12 @@
 from django.apps import apps
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Count
+from django.db.models import Count, Q
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics, permissions, viewsets
 
+from utils import get_asset_model
 from articles.models import Article
 from articles.serializers import ArticleSerializer
 from comments.models import Comment
@@ -37,23 +38,12 @@ class CommentListAPIView(generics.ListAPIView):
     def get_queryset(self):
         query = Comment.objects.all()
         asset_category = self.request.query_params.get('asset_category')
-        print('-------- asset category ', asset_category)
-        # asset_pk = self.request.query_params.get('asset_pk')
-        # print('-------- asset-pk ', asset_pk)
-        model_dict = {
-            'entry': 'entries',
-            'article': 'articles',}
-        app_name = model_dict.get(asset_category)
-        if app_name is not None:
-            asset_model = apps.get_model(app_label=app_name, model_name=asset_category)
+        asset_pk = self.request.query_params.get('asset_pk')
+        asset_model = get_asset_model(asset_category)
 
-            try:
-                #asset_given = asset_model.objects.get(pk = asset_pk)
-                asset_type = ContentType.objects.get_for_model(asset_model)
-                print('------- asset_type is: ', asset_type)
-                print('------- asset_type__pk is: ', asset_type.pk)
-                query = Comment.objects.filter(content_type__pk = asset_type.id)
+        if asset_model is not None:
+            query = query.filter(
+                Q(content_type = asset_model),
+                Q(object_id = asset_pk),)
 
-            except ObjectDoesNotExist:
-                query = Comment.objects.all()
         return query
