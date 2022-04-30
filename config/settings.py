@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # local
+    'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
     'articles.apps.ArticlesConfig',
     'comments.apps.CommentsConfig',
