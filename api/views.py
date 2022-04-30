@@ -31,7 +31,7 @@ class EntryViewSet(viewsets.ModelViewSet):
     ordering_fields = ['number_of_comments']
 
 
-class CommentListAPIView(generics.ListAPIView):
+class CommentListCreateAPIView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
