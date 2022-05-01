@@ -17,20 +17,13 @@ class TestEntry:
         field_unique_expected = True
         field_unique_given = field.unique
         assert field_unique_expected == field_unique_given
-        com = Entry._meta.get_field('comments')
-        assert GenericRelation == com.__class__
 
-"""
-    def test_body_field(self):
-        field = Entry._meta.get_field('body')
+    def test_content_field(self):
+        field = Entry._meta.get_field('content')
         field_type_expected = models.TextField
         field_type_given = field.__class__
-        self.assertEqual(field_type_expected, field_type_given)
-        field_max_length_expected = 1000
-        field_max_length_given = field.max_length
-        self.assertEqual(field_max_length_expected, field_max_length_given)
-        field_default_expected = "some text"
-        field_default_given = field.default
-        self.assertEqual(field_default_expected, field_default_given)
+        assert field_type_expected == field_type_given
 
-"""
+    def test_comments_field(self):
+        comment = Entry._meta.get_field('comments')
+        assert GenericRelation == comment.__class__
