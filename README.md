@@ -2,11 +2,11 @@
 
 User can write articles or antries and add comments.
 
-The app is created with Django Rest Framework in a docker container.
+The app is created with Django Rest Framework in a docker container.</br></br>
 
 **User can register using this path**
 
-/api/dj-rest-auth/registration/
+/api/dj-rest-auth/registration/</br></br>
 
 **Login / log out and other functionalities are here:**
 
@@ -16,12 +16,12 @@ The app is created with Django Rest Framework in a docker container.
 
 /api/dj-rest-auth/password/reset/
 
-/api/dj-rest-auth/password/reset/confirm/
+/api/dj-rest-auth/password/reset/confirm/</br></br>
 
 
 **There's facebook login option**
 
-/api/dj-rest-auth/facebook/
+/api/dj-rest-auth/facebook/</br></br>
 
 
 **Blog functionalities are:**
