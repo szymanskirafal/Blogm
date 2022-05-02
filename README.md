@@ -1,4 +1,4 @@
-**Blogm is simple blog application.**</br>
+**Blogm is simple blog application.**</br></br>
 
 User can write articles or antries and add comments.
 
