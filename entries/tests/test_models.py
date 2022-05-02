@@ -27,3 +27,10 @@ class TestEntry:
     def test_comments_field(self):
         comment = Entry._meta.get_field('comments')
         assert GenericRelation == comment.__class__
+
+    @pytest.mark.django_db
+    def test_str_return_title(self):
+        entry = Entry.objects.create(
+            title = 'Some title',
+            content = 'Some text', )
+        assert str(entry) == 'Entry - Some title'
