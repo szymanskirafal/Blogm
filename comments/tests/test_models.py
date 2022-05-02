@@ -1,6 +1,9 @@
+from django.db import models
+
 from comments.models import Comment
 
 import pytest
+
 
 class TestComment:
 

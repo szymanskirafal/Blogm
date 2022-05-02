@@ -161,3 +161,4 @@ cython_debug/
 
 # added to template
 .DS_Store
+.pyc
