@@ -10,4 +10,4 @@ class Article(models.Model):
     comments = GenericRelation(Comment)
 
     def __str__(self):
-        return f'Article - {self.title}'
+        return f"Article - {self.title}"

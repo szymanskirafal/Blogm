@@ -6,9 +6,8 @@ import pytest
 
 
 class TestComment:
-
     def test_body_field(self):
-        field = Comment._meta.get_field('body')
+        field = Comment._meta.get_field("body")
         field_type_expected = models.CharField
         field_type_given = field.__class__
         assert field_type_expected == field_type_given

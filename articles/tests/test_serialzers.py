@@ -7,8 +7,16 @@ import pytest
 @pytest.mark.django_db
 def test_serializer_has_required_fields():
     article = Article.objects.create(
-        title = 'some tilte',
-        content = 'some content',)
+        title="some tilte",
+        content="some content",
+    )
     serializer = ArticleSerializer(instance=article)
     data = serializer.data
-    assert set(data.keys()) == set(['id', 'title', 'content', 'number_of_comments', ])
+    assert set(data.keys()) == set(
+        [
+            "id",
+            "title",
+            "content",
+            "number_of_comments",
+        ]
+    )

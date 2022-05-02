@@ -4,5 +4,5 @@ from .views import FacebookLogin
 
 
 urlpatterns = [
-    path('', FacebookLogin.as_view(), name="facebook-login"),
+    path("", FacebookLogin.as_view(), name="facebook-login"),
 ]

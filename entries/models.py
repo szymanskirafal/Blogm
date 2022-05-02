@@ -10,7 +10,7 @@ class Entry(models.Model):
     comments = GenericRelation(Comment)
 
     class Meta:
-        verbose_name_plural = 'Entries'
+        verbose_name_plural = "Entries"
 
     def __str__(self):
-        return f'Entry - {self.title}'
+        return f"Entry - {self.title}"

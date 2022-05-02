@@ -7,4 +7,9 @@ class EntrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Entry
-        fields = ['id', 'title', 'content', 'number_of_comments', ]
+        fields = [
+            "id",
+            "title",
+            "content",
+            "number_of_comments",
+        ]

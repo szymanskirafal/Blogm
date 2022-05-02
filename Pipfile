@@ -13,6 +13,7 @@ dj-rest-auth = "*"
 django-allauth = "*"
 django-filter = "*"
 pytest-django = "*"
+black = "*"
 
 [dev-packages]
 

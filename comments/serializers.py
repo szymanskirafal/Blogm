@@ -3,7 +3,11 @@ from .models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Comment
-        fields = ['id', 'body', 'content_type', 'object_id', ]
+        fields = [
+            "id",
+            "body",
+            "content_type",
+            "object_id",
+        ]
