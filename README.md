@@ -1,14 +1,14 @@
-Blogm is simple blog application.
+**Blogm is simple blog application.**
 
 User can write articles or antries and add comments.
 
 The app is created with Django Rest Framework in a docker container.
 
-User can register using this path
+**User can register using this path**
 
-'/api/dj-rest-auth/registration/'
+/api/dj-rest-auth/registration/
 
-Login / log out and other functionalities are here:
+**Login / log out and other functionalities are here:**
 
 /api/dj-rest-auth/login/
 
@@ -19,30 +19,18 @@ Login / log out and other functionalities are here:
 /api/dj-rest-auth/password/reset/confirm/
 
 
-There's facebook login option
+**There's facebook login option**
 
 /api/dj-rest-auth/facebook/
 
 
-Blog functionalities are:
+**Blog functionalities are:**
 
-/api/articles/
+/api/articles/ - where user can see the list of all articels, a specific article or create new one
 
-where user can see the list of all articels, a specific article or create new one
+/api/entries/ - where user can see the list of all entries, a specific entry or create new one
 
-/api/entries/
+/api/comments/ - where user can see the list of all comments, a specific comment or create new one
 
-where user can see the list of all entries, a specific entry or create new one
-
-/api/comments/
-
-where user can see the list of all comments, a specific comment or create new one
-
-/api/comments/
-
-where user can see the list of all comments, a specific comment or create new one
-
-/api/comments/?asset_category=article&asset_pk=1
-
-where user can see the list of comments for given asset
+/api/comments/?asset_category=article&asset_pk=1 - where user can see the list of comments for given asset
 
