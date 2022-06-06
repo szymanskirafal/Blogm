@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
-from pathlib import Path
+from celery.schedules import crontab
 from environs import Env
+from pathlib import Path
+
+import os
 
 env = Env()
 env.read_env()
@@ -24,14 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DJANGO_DEBUG')
+DEBUG = os.environ.get('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = env.list(
+ALLOWED_HOSTS = list(os.environ.get(
     ('DJANGO_ALLOWED_HOST'),
-    default=['localhost', '0.0.0.0', '127.0.0.1', ])
+    default=['localhost', '0.0.0.0', '127.0.0.1', ]))
 
 
 # Application definition
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'articles.apps.ArticlesConfig',
     'comments.apps.CommentsConfig',
     'entries.apps.EntriesConfig',
+    'weather',
 
     # 3rd party
     'allauth',
@@ -177,3 +180,15 @@ REST_FRAMEWORK = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+
+# Celery
+CELERY_TASK_ALWAYS_EAGER=True
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+
+CELERY_BEAT_SCHEDULE = {
+    'hello': {
+        'task': 'app.tasks.hello',
+        'schedule': crontab()  # execute every minute
+    }
+}
