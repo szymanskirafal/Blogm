@@ -18,6 +18,8 @@ celery = "*"
 redis = "*"
 flower = "*"
 django-celery-beat = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 

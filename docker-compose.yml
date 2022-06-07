@@ -8,6 +8,7 @@ services:
     environment:
       - "DJANGO_DEBUG=True"
       - "DJANGO_SECRET_KEY=django-insecure-8jc=7--=+!ak=d*v!n)qt__zurp1t3k#4p4op)s&w3p=^ba0"
+      - "ENVIRONMENT=development"
       #- "REDIS_HOST=redis"
     volumes:
       - .:/code
@@ -41,7 +42,7 @@ services:
 
   celery-beat:
     build: .
-    command: celery -A config beat -l info --scheduler config.schedulers:DatabaseScheduler
+    command: celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - .:/code
     depends_on:
