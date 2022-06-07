@@ -17,6 +17,7 @@ black = "*"
 celery = "*"
 redis = "*"
 flower = "*"
+django-celery-beat = "*"
 
 [dev-packages]
 

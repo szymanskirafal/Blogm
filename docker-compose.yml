@@ -41,7 +41,7 @@ services:
 
   celery-beat:
     build: .
-    command: celery -A config beat -l info
+    command: celery -A config beat -l info --scheduler config.schedulers:DatabaseScheduler
     volumes:
       - .:/code
     depends_on:

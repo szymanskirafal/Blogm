@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'django_filters',
+    'django_celery_beat',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -188,8 +189,8 @@ CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 CELERY_BEAT_SCHEDULE = {
     'hello': {
-        'task': 'app.tasks.hello',
-        'schedule': crontab()  # execute every minute
+        'task': 'weather.tasks.hello',
+        'schedule': crontab(minute="57")  # execute every minute
     }
 }
 
