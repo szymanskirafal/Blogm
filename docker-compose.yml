@@ -8,6 +8,7 @@ services:
     environment:
       - "DJANGO_DEBUG=True"
       - "DJANGO_SECRET_KEY=django-insecure-8jc=7--=+!ak=d*v!n)qt__zurp1t3k#4p4op)s&w3p=^ba0"
+      #- "REDIS_HOST=redis"
     volumes:
       - .:/code
     ports:
@@ -43,6 +44,17 @@ services:
     command: celery -A config beat -l info
     volumes:
       - .:/code
+    depends_on:
+      - db
+      - redis
+
+  flower:
+    build: .
+    command: celery -A config --broker="redis://redis:6379/0" flower
+    volumes:
+      - .:/code
+    ports:
+      - 5557:5555
     depends_on:
       - db
       - redis

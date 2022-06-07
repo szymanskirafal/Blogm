@@ -182,9 +182,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
 # Celery
-CELERY_TASK_ALWAYS_EAGER=True
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+#CELERY_TASK_ALWAYS_EAGER=True
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 CELERY_BEAT_SCHEDULE = {
     'hello': {
@@ -192,3 +192,7 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab()  # execute every minute
     }
 }
+
+# Redis
+#REDIS_HOST = os.environ.get('REDIS_HOST', '127.0.0.1')
+#REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
