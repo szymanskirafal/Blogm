@@ -20,6 +20,7 @@ flower = "*"
 django-celery-beat = "*"
 whitenoise = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
