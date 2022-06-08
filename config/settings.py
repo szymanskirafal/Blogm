@@ -32,7 +32,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = list(os.environ.get(
     ('DJANGO_ALLOWED_HOSTS'),
-    default=['localhost', '0.0.0.0', '127.0.0.1', ]))
+    default=['pogodar.herokuapp.com', 'localhost', '0.0.0.0', '127.0.0.1', ]))
 
 
 # Application definition
