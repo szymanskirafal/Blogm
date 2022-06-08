@@ -10,6 +10,10 @@ release:
     - python manage.py collectstatic --noinput
 run:
   web: gunicorn config.wsgi
-  celery: celery -A config worker -l info
-  celery-beat: celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-  flower: celery -A config --broker="redis://redis:6379/0" flower
+  celery_worker:
+    command: celery -A config worker -l info
+    image: web
+  celery-beat:
+    command: celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    image: web
+  #flower: celery -A config --broker="redis://redis:6379/0" flower
