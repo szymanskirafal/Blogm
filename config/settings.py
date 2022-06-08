@@ -216,7 +216,7 @@ if ENVIRONMENT == 'production':
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = False
     CSRF_TRUSTED_ORIGINS = ['https://pogodar.herokuapp.com']
 
 # Heroku
