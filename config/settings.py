@@ -190,9 +190,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
 # Celery
-#CELERY_TASK_ALWAYS_EAGER=True
-CELERY_BROKER_URL = "redis://redis:6379/0"
-CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+
+CELERY_BROKER_URL = os.environ.get('REDIS_URL')
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL')
+# CELERY_BROKER_URL = "redis://redis:6379/0"
+# CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+# CELERY_TASK_ALWAYS_EAGER=True
 
 CELERY_BEAT_SCHEDULE = {
 #    'hello': {
@@ -223,5 +226,5 @@ if ENVIRONMENT == 'production':
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
-                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+# app.conf.update(CELERY_BROKER_URL=os.environ['REDIS_URL'],
+#                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
