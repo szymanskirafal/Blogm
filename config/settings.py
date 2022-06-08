@@ -217,7 +217,7 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    CSRF_TRUSTED_ORIGINS = ['https://pogoda.herokuapp.com']
+    CSRF_TRUSTED_ORIGINS = ['https://pogodar.herokuapp.com']
 
 # Heroku
 db_from_env = dj_database_url.config(conn_max_age=500)
