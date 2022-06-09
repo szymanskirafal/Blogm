@@ -173,7 +173,7 @@ CELERY_BEAT_SCHEDULE = {
 #        'task': 'weather.tasks.hello',
 #        'schedule': crontab()  # execute every minute
 #    }
-#}
+}
 
 # security for production
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
