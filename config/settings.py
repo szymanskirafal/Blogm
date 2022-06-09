@@ -169,11 +169,11 @@ CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
 # CELERY_TASK_ALWAYS_EAGER=True
 
 CELERY_BEAT_SCHEDULE = {
-    'hello': {
-        'task': 'weather.tasks.hello',
-        'schedule': crontab()  # execute every minute
-    }
-}
+#    'hello': {
+#        'task': 'weather.tasks.hello',
+#        'schedule': crontab()  # execute every minute
+#    }
+#}
 
 # security for production
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
