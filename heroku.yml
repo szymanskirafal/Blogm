@@ -7,8 +7,8 @@ build:
     celery: Dockerfile
 run:
   web: gunicorn config.wsgi
-  # celery: celery -A config worker -l info --beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-  celery: celery -A config flower -l info --broker=$REDIS_URL --port=$FLOWER_PORT
+  celery: celery -A config worker -l info --beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+  flower: celery -A config -l info --broker=$REDIS_URL --port=$FLOWER_PORT flower
 release:
   image: web
   command:
