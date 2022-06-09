@@ -9,7 +9,7 @@ build:
 run:
   web: gunicorn config.wsgi
   celery: celery -A config worker -l info --beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-  flower: celery flower
+  flower: celery flower --basic_auth=raf:pass
   #--broker=$REDIS_URL --port=$FLOWER_PORT flower
 release:
   image: web
