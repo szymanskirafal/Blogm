@@ -16,6 +16,6 @@ run:
     image: web
   celery-beat:
     command:
-      - celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+      - celery -A config beat -l info #--scheduler django_celery_beat.schedulers:DatabaseScheduler
     image: web
   #flower: celery -A config --broker="redis://redis:6379/0" flower
