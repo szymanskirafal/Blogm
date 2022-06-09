@@ -6,10 +6,8 @@ services:
     build: .
     command: gunicorn config.wsgi -b 0.0.0.0:8000
     environment:
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
       - DJANGO_DEBUG=True
-      - DJANGO_SECRET_KEY=django-insecure-8jc=7--=+!ak=d*v!n)qt__zurp1t3k#4p4op)s&w3p=^ba0
+      - DJANGO_SECRET_KEY="django-insecure-8jc=7--=+!ak=d*v!n)qt__zurp1t3k#4p4op)s&w3p=^ba0"
       - ENVIRONMENT=development
     volumes:
       - .:/code
