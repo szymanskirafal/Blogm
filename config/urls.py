@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', include('weather.urls')),
+    path('', include('weather.urls', namespace='weather')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('api/dj-rest-auth/', include('dj_rest_auth.urls')),

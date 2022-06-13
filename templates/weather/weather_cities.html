@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block content %}
+      <h1>Miasta</h1>
+      <br><br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Miasto</td>
+            <td>Województwo</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for city in cities %}
+            <tr class="clickable_row" data-url="{% url 'weather:weather-in-city' city.id %}" %}">
+              <td>{{ city.name }}</td>
+              <td>{{ city.voivodeship }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endblock content %}

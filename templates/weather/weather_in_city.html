@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block content %}
+      <h1>Pogoda</h1>
+      <h2>{{ city.name }}</h2>
+      <br><br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Temperatura</td>
+            <td>Ciśnienie</td>
+            <td>Wilgotność</td>
+            <td>Czas pomiaru</td>
+            <td>Źródło</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for weather in weathers %}
+            <tr>
+              <td>{{ weather.temp }}</td>
+              <td>{{ weather.pressure }}</td>
+              <td>{{ weather.humidity }}</td>
+              <td>{{ weather.measurement_time }}</td>
+              <td>{{ weather.source }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endblock content %}
