@@ -2,12 +2,18 @@ html, body {
   height: 100%;
 }
 
-.bigger-text {
-  font-size: 2.0em;
-
+.big-text {
+  font-size: 1.5em;
 }
 
-.citrone {
-  background: linear-gradient(180deg, #e6fffa ,#b3c6ff);
+.bigger-text {
+  font-size: 2.0em;
+}
 
+.ice {
+  background: linear-gradient(180deg, #e6fffa ,#b3c6ff);
+}
+
+.lemon {
+  background: linear-gradient(180deg, #fff6ff ,#cc99ff);
 }

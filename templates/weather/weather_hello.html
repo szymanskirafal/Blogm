@@ -2,12 +2,12 @@
 {% load static %}
 
   {% block content %}
-  <div class="h-100 d-inline-block container-fluid citrone">
-    <div class="h-25 d-inline-block container-fluid bigger-text"></div>
+  <div class="h-100 d-inline-block container-fluid ice">
+    <div class="h-25 d-inline-block container-fluid"></div>
     <div class="h-50 d-inline-block container-fluid text-center bigger-text">
       <h1>Pogoda w wybranych miastach</h1>
-      <a class="btn btn-outline-dark btn-lg p-t-3" href="#" role="button">Więcej</a>
+      <a class="btn btn-outline-dark btn-lg p-t-3" href="{% url 'weather:weather-about' %}" role="button">Więcej</a>
     </div>
-    <div class="h-25 d-inline-block container-fluid bigger-text"></div>
+    <div class="h-25 d-inline-block container-fluid"></div>
   </div>
   {% endblock content %}
