@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+}
+
+.bigger-text {
+  font-size: 2.0em;
+}
+
+.citrone {
+  background: linear-gradient(180deg, #ffffff ,#fff5e6);
+}
