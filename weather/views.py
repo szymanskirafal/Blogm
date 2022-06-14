@@ -21,7 +21,7 @@ class WeatherInCityListView(generic.ListView):
 
     def get_queryset(self):
         self.city = get_object_or_404(City, pk=self.kwargs['city_id'])
-        return WeatherInCity.objects.filter(city=self.city)
+        return WeatherInCity.objects.filter(city=self.city).order_by('-measurement_time')
 
 
 class WeatherHelloTemplateView(generic.TemplateView):
