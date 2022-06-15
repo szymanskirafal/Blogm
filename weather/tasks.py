@@ -1,7 +1,9 @@
 from celery import shared_task
 from datetime import datetime
+import os
 import requests
 
+from config import settings
 from .models import City
 from .serializers import WeatherInCitySerializer
 
@@ -10,12 +12,13 @@ from .serializers import WeatherInCitySerializer
 def check_weather():
     data_for_all_cities = []
     cities = City.objects.all()
+    appid = '0db462d7cd3cd90563fd7059cbe2a4f5'
     for city in cities:
         if city.name == 'Zielona Góra':
             city_name = 'Zielona Gora'
         else:
             city_name = city.name
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=0db462d7cd3cd90563fd7059cbe2a4f5&units=metric"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={appid}&units=metric"
         response = requests.get(url)
         response = response.json()
         weather = response['main']

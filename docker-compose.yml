@@ -6,6 +6,7 @@ services:
     build: .
     command: gunicorn config.wsgi -b 0.0.0.0:8000
     environment:
+      - OPEN_WEATHER_APP_ID=0db462d7cd3cd90563fd7059cbe2a4f5
       - DJANGO_DEBUG=True
       - DJANGO_SECRET_KEY="django-insecure-8jc=7--=+!ak=d*v!n)qt__zurp1t3k#4p4op)s&w3p=^ba0"
       - ENVIRONMENT=development
