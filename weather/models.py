@@ -8,10 +8,16 @@ class Voivodeship(models.Model):
         return f"{self.name}"
 
 class City(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
     voivodeship = models.ForeignKey(Voivodeship, on_delete=models.CASCADE)
 
     class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'voivodeship'],
+                name='unique city in voivodeship',
+            )
+        ]
         verbose_name_plural = "Cities"
 
     def __str__(self):
