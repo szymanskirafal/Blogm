@@ -38,3 +38,17 @@ class WeatherInCity(models.Model):
 
     def __str__(self):
         return f"{self.city.name} - {self.temp} / {self.measurement_time}"
+
+
+class WeatherInVoivodeship(models.Model):
+    voivodeship = models.ForeignKey(Voivodeship, on_delete=models.CASCADE, related_name='weather')
+    temp = models.SmallIntegerField()
+    pressure = models.PositiveSmallIntegerField()
+    humidity = models.PositiveSmallIntegerField()
+    measurement_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Weather in the Voivodeships"
+
+    def __str__(self):
+        return f"{self.voivodeship.name} - {self.temp} / {self.measurement_time}"

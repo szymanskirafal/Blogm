@@ -11,12 +11,20 @@
           <thead>
             <tr>
               <td>Województwo</td>
+              <td>Temperatura</td>
+              <td>Ciśnienie</td>
+              <td>Wilgotność</td>
+              <td>Czas pomiaru</td>
             </tr>
           </thead>
           <tbody>
             {% for voivodeship in voivodeships %}
               <tr class="clickable_row" data-url="{% url 'weather:weather-cities' voivodeship.id %}" %}">
                 <td>{{ voivodeship.name }}</td>
+                <td>{{ voivodeship.weather.last.temp }} °C</td>
+                <td>{{ voivodeship.weather.last.pressure }} hPa</td>
+                <td>{{ voivodeship.weather.last.humidity }} %</td>
+                <td>{{ voivodeship.weather.last.measurement_time }}</td>
               </tr>
             {% endfor %}
           </tbody>

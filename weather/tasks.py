@@ -4,7 +4,8 @@ import os
 import requests
 
 from config import settings
-from .models import City
+from django.db.models import Avg
+from .models import City, Voivodeship, WeatherInCity, WeatherInVoivodeship
 from .serializers import WeatherInCitySerializer
 
 
@@ -34,6 +35,30 @@ def check_weather():
     serializer = WeatherInCitySerializer(data=data_for_all_cities, many=True)
     if serializer.is_valid():
         serializer.save()
+        calculate_and_save_weather_for_voivodeship.delay()
         return True
     else:
         return False
+
+@shared_task
+def calculate_and_save_weather_for_voivodeship():
+    cities = City.objects.all()
+    cities = cities.filter(voivodeship__name__iexact='lubuskie')
+    nr_of_cities_in_voivodeship = cities.count()
+
+    weather_in_cities = WeatherInCity.objects.filter(city__in=cities)
+    weather_in_cities = weather_in_cities.order_by('-measurement_time')
+    weather_in_cities = weather_in_cities[:nr_of_cities_in_voivodeship]
+    weather_in_cities = weather_in_cities.aggregate(
+        average_temp=Avg('temp'),
+        average_pressure=Avg('pressure'),
+        average_humidity=Avg('humidity'),
+        )
+    WeatherInVoivodeship.objects.create(
+        voivodeship = Voivodeship.objects.get(name='Lubuskie'),
+        temp = int(weather_in_cities['average_temp']),
+        pressure = int(weather_in_cities['average_pressure']),
+        humidity = int(weather_in_cities['average_humidity']),
+        measurement_time = datetime.now(),
+        )
+    return True

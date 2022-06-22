@@ -23,7 +23,6 @@ class WeatherCitiesListView(generic.ListView):
         return cities
 
 
-
 class WeatherInCityListView(generic.ListView):
     context_object_name = "weathers"
     model = WeatherInCity
@@ -51,3 +50,6 @@ class WeatherVoivodeshipsListView(generic.ListView):
     context_object_name = 'voivodeships'
     model = Voivodeship
     template_name = "weather/weather_voivodeships.html"
+
+    def get_queryset(self):
+        return Voivodeship.objects.all().prefetch_related('weather')
