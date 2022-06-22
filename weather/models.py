@@ -25,7 +25,7 @@ class City(models.Model):
 
 
 class WeatherInCity(models.Model):
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='weather')
     temp = models.SmallIntegerField()
     pressure = models.PositiveSmallIntegerField()
     humidity = models.PositiveSmallIntegerField()

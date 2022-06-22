@@ -12,6 +12,7 @@ from .serializers import WeatherInCitySerializer
 def check_weather():
     data_for_all_cities = []
     cities = City.objects.all()
+    cities = cities.filter(voivodeship__name__iexact='lubuskie')
     appid = '0db462d7cd3cd90563fd7059cbe2a4f5'
     for city in cities:
         if city.name == 'Zielona Góra':

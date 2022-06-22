@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from .models import City, Voivodeship, WeatherInCity
@@ -14,8 +15,13 @@ class WeatherCitiesListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        self.voivodeship = get_object_or_404(Voivodeship, pk=self.kwargs['voivodeship_id'])
-        return City.objects.filter(voivodeship=self.voivodeship).order_by('name')
+        pk = self.kwargs['voivodeship_id']
+        self.voivodeship = get_object_or_404(Voivodeship, pk=pk)
+        cities = City.objects.filter(voivodeship=self.voivodeship)
+        cities = cities.order_by('name')
+        cities = cities.prefetch_related('weather')
+        return cities
+
 
 
 class WeatherInCityListView(generic.ListView):

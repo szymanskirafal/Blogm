@@ -6,7 +6,6 @@ from weather.models import City, Voivodeship
 
 
 class Command(BaseCommand):
-    help = 'Load a cities csv file into the database'
 
     def handle(self, *args, **kwargs):
         with open('weather/cities.csv') as csv_file:
